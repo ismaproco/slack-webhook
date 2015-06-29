@@ -5,4 +5,5 @@ This is a library that allows node applications to receive and response request 
 Requirements
 
 * NodeJS
-
+* ExpressJS
+* jsonfile
