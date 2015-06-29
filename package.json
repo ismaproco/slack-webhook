@@ -1,0 +1,14 @@
+{
+  "name": "slack-hook",
+  "version": "1.0.0",
+  "description": "library that allows node applications to receive and response request from the Slack Webhook API.",
+  "main": "server.js",
+  "repository": "",
+  "author": "Ismael Jimenez <ismaproco@gmail.com>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "socket.io": "~0.9.14",
+    "jsonfile": "~2.2.1"
+  }
+}
