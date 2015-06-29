@@ -10,8 +10,8 @@ Requirements
 
 To install use the library execute:
 
-``` npm install npm
+``` npm install npm ```
 
 To run the test server
 
-``` node server.js
+``` node server.js ```
