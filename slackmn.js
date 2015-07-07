@@ -19,7 +19,9 @@ trigger_word=googlebot:
 
 curl command:
 
-curl -H "token:rjUF85oyK5sCTTBQgW3zWncg" -H "team_id:T0001" -H "team_domain:example" -H "channel_id:C2147483705" -H "channel_name:c7" -H "timestamp:1355517523.000005" -H "user_id:5465" -H "user_name:Steve" -H "text:googlebot" -H "trigger_word:LOL!"  https://note-manager-ismapro.c9.io/smashing
+curl -H "token:rjUF85oyK5sCTTBQgW3zWncg,team_id:T0001" -H "team_domain:example" -H "channel_id:C2147483705" -H "channel_name:c7" -H "timestamp:1355517523.000005" -H "user_id:5465" -H "user_name:Steve" -H "text:googlebot" -H "trigger_word:LOL!"  https://note-manager-ismapro.c9.io/smashing
+curl 'http://localhost:3000/smashing' -H 'token:rjUF85oyK5sCTTBQgW3zWncg,team_id:T0001,team_domain:example,channel_id:C2147483705,channel_name:c7,timestamp:1355517523.000005,user_id:5465,user_name:Steve,text:googlebot,trigger_word:LOL!'
+
 
 */
 
@@ -82,10 +84,7 @@ SlackManager.prototype.saveMessage = function savePost( data ) {
 
 // Load file messages from the file and return as a JSON object
 SlackManager.prototype.loadMessages = function loadMessages() {
-    var info = jf.readFile('dbdata.json',function(err){
-        console.log('Something happen!');
-    });
-    
+    var info = jf.readFileSync('dbdata.json');
     return info;
 }
 
