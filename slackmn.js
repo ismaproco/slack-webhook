@@ -45,7 +45,7 @@ SlackManager.prototype.parseHeader = function parseHeader(header) {
     header = header || {};
     
     var token = header.hasOwnProperty('token') ? header['token'] : '';
-    console.log('abismal - ', token, header['token'],typeof header );
+    
     if( !token ) {
         return null;
     }
