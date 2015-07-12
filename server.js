@@ -6,12 +6,13 @@
 //
 // A simple chat server using Socket.IO, Express, and Async.
 //
+var express = require('express');
 var http = require('http');
 var path = require('path');
-
-var async = require('async');
-var socketio = require('socket.io');
-var express = require('express');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
 var slack = require('./slackmn');
 
@@ -23,14 +24,19 @@ var slack = require('./slackmn');
 //
 var router = express();
 var server = http.createServer(router);
-var io = socketio.listen(server);
+
+
+router.use( bodyParser.json() );       // to support JSON-encoded bodies
+router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 router.use(express.static(path.resolve(__dirname, 'client')));
 
 // Slack messagges reception Manager
-router.all('/smashing',function(req, res) {
+router.all('/slack',function(req, res) {
   
-  var message = slack.parseHeader( req.headers );
+  var message = slack.parseHeader( req );
   slack.saveMessage(message);
   res.send( JSON.stringify( slack.loadMessages() ) );
 });
